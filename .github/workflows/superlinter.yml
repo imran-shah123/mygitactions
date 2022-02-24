@@ -17,4 +17,4 @@ jobs:
           tlsSkipVerify: true
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            secret/data/ci Access_key_ID
+            aws/data/devops-role Access_key_ID
