@@ -17,7 +17,7 @@ jobs:
           tlsSkipVerify: true
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            secret/data/ci app_secret
+            secret/ci app_secret
             
       - name: Run Super-Linter
         uses: github/super-linter@v4
