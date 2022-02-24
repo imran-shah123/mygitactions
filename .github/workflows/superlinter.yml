@@ -8,12 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@2
         
+      - name: Import Secrets
+        uses: hashicorp/vault-action@v2.4.0
+        with:
+          url: http://127.0.0.1:8200
+          tlsSkipVerify: true
+          token: ${{ secrets.VAULT_TOKEN }}
+          secrets: |
+            secret/data/ci 
+            
       - name: Run Super-Linter
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
