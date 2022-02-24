@@ -6,12 +6,6 @@ jobs:
   super-lint:
     name: lint code base
     runs-on: self-hosted
-  deploy:
-    name: Upload to Amazon S3
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
     steps:
       - name: checkout code
         uses: actions/checkout@v2
@@ -23,7 +17,15 @@ jobs:
           tlsSkipVerify: true
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            secret/data/ci app_secret
+            secret/data/ci Access_key_ID;
+            secret/data/ci Secret_access_key
+  deploy:
+    name: Upload to Amazon S3
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
       - name: Configure AWS credentials from Test account
         uses: aws-actions/configure-aws-credentials@v1
         with:
