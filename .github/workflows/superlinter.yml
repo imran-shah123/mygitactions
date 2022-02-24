@@ -18,10 +18,3 @@ jobs:
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
             secret/data/ci app_secret
-            
-      - name: Run Super-Linter
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
