@@ -18,4 +18,4 @@ jobs:
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
             secret/data/ci Access_key_ID
-            secret/data/ci Secret_access_key
+            secret/data/ci1 Secret_access_key
