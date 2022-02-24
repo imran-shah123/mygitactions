@@ -6,6 +6,12 @@ jobs:
   super-lint:
     name: lint code base
     runs-on: self-hosted
+  deploy:
+    name: Upload to Amazon S3
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: checkout code
         uses: actions/checkout@v2
@@ -13,9 +19,12 @@ jobs:
       - name: Import Secrets
         uses: hashicorp/vault-action@v2.4.0
         with:
-          url: http://127.0.0.1:8200
+          url: https://127.0.0.1:8200
           tlsSkipVerify: true
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            secret/data/ci Access_key_ID;
-            secret/data/ci Secret_access_key
+            secret/data/ci app_secret
+      - name: Configure AWS credentials from Test account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: us-east-2
