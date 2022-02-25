@@ -23,10 +23,6 @@ jobs:
     name: Upload to Amazon S3
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@master
-      
-      - uses: jakejarvis/s3-sync-action@master
-
       - name: Configure AWS credentials from Test account
         uses: aws-actions/configure-aws-credentials@v1
         with:
