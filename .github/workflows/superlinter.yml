@@ -17,8 +17,8 @@ jobs:
           tlsSkipVerify: true
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            secret/data/ci Access_key_ID;
-            secret/data/ci Secret_access_key
+            secret/data/ci Access_key_ID | AWS_SECRET_ACCESS_KEY;
+            secret/data/ci Secret_access_key | AWS_SECRET_ACCESS_KEY
   deploy:
     name: Upload to Amazon S3
     runs-on: ubuntu-latest
