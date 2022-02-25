@@ -21,7 +21,7 @@ jobs:
             secret/data/ci Secret_access_key | AWS_SECRET_ACCESS_KEY
   deploy:
     name: Upload to Amazon S3
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Configure AWS credentials from Test account
         uses: aws-actions/configure-aws-credentials@v1
