@@ -19,3 +19,13 @@ jobs:
           secrets: |
             secret/data/ci Access_key_ID;
             secret/data/ci Secret_access_key
+  deploy:
+    name: Upload to Amazon S3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials from Test account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.VAULT_TOKEN }}
+          aws-secret-access-key: ${{ secrets.VAULT_TOKEN }}
+          aws-region: us-east-2
