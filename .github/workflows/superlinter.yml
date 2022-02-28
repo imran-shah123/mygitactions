@@ -15,8 +15,8 @@ jobs:
         with:
           url: https://vault-cluster.vault.e97a5cb6-6314-492a-a9ab-7d87e2b4461b.aws.hashicorp.cloud:8200
           tlsSkipVerify: false
-          token: ${{ secrets.VAULT_TOKEN }}
-          exportToken: true
+          method: github
+          githubToken: ${{ secrets.PAT_TOKEN }}
           secrets: |
             secret/data/ci Access_key_ID | AWS_ACCESS_KEY_ID;
             secret/data/ci Secret_access_key | AWS_SECRET_ACCESS_KEY
