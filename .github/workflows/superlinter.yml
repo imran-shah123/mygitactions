@@ -14,7 +14,6 @@ jobs:
         uses: hashicorp/vault-action@v2.4.0
         with:
           url: https://vault-cluster.vault.e97a5cb6-6314-492a-a9ab-7d87e2b4461b.aws.hashicorp.cloud:8200
-          method: token
           token: ${{ secrets.VAULT_TOKEN }}
           tlsSkipVerify: true
           secrets: |
