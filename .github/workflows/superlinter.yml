@@ -22,8 +22,8 @@ jobs:
           githubToken: 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
           tlsSkipVerify: true
           secrets: |
-            secret/data/ci Access_key_ID | AWS_ACCESS_KEY_ID;
-            secret/data/ci Secret_access_key | AWS_SECRET_ACCESS_KEY
+            secret/ci Access_key_ID | AWS_ACCESS_KEY_ID;
+            secret/ci Secret_access_key | AWS_SECRET_ACCESS_KEY
   deploy:
     name: Upload to Amazon S3
     runs-on: ubuntu-latest
