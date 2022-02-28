@@ -18,12 +18,12 @@ jobs:
         with:
           url: https://vault-cluster.vault.e97a5cb6-6314-492a-a9ab-7d87e2b4461b.aws.hashicorp.cloud:8200
           method: github
-          token: ${{ secrets.VAULT_TOKEN }}
-          githubToken: ${{ secrets.PAT_TOKEN }}
+          token: s.Wql516Ppr8fMJNIY9cPExgEz.azgcI
+          githubToken: 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
           tlsSkipVerify: true
           secrets: |
-            secret/ci Access_key_ID | AWS_ACCESS_KEY_ID;
-            secret/ci Secret_access_key | AWS_SECRET_ACCESS_KEY
+            secret/data/ci Access_key_ID | AWS_ACCESS_KEY_ID;
+            secret/data/ci Secret_access_key | AWS_SECRET_ACCESS_KEY
   deploy:
     name: Upload to Amazon S3
     runs-on: ubuntu-latest
