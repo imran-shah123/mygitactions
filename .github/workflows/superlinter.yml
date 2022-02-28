@@ -5,7 +5,7 @@ on: push
 jobs:
   super-lint:
     name: lint code base
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: checkout code
         uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
             secret/data/ci Secret_access_key | AWS_SECRET_ACCESS_KEY
   deploy:
     name: Upload to Amazon S3
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Configure AWS credentials from Test account
         uses: aws-actions/configure-aws-credentials@v1
