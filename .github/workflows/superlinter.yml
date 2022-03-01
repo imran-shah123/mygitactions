@@ -16,7 +16,7 @@ jobs:
       - name: Import Secrets
         uses: hashicorp/vault-action@v2.3.1
         with:
-          url: https://vault-cluster.vault.e97a5cb6-6314-492a-a9ab-7d87e2b4461b.aws.hashicorp.cloud:8200
+          url: http://127.0.0.1:8200
           token: ${{ secrets.VAULT_TOKEN }}
           tlsSkipVerify: true
           secrets: |
