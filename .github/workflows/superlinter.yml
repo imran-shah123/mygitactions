@@ -23,7 +23,7 @@ jobs:
           echo
 
       - name: Installing Vault
-          vault kv get kv/ci
+        run: vault kv get kv/ci
           echo
       
       - name: Import Secrets
