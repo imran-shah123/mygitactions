@@ -22,10 +22,10 @@ jobs:
       - run: vault login ${{ secrets.VAULT_TOKEN }}
       
       - name: Get Access Key
-        run:  vault kv get --field=ACCESS_KEY_ID kv/ci
+        run:  vault kv get --Access_key_ID kv/ci
 
       - name: Get Secret Key
-        run: vault kv get --field=SECRET_ACCESS_KEY kv/ci
+        run: vault kv get --Secret_access_key kv/ci
    
       - name: Import Secrets
         uses: hashicorp/vault-action@v2.4.0
