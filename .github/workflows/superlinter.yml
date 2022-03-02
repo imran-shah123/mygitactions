@@ -31,5 +31,5 @@ jobs:
           tlsSkipVerify: true
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            secret/data/ci Access_key_ID;
-            secret/data/ci Secret_access_key
+            kv/data/ci Access_key_ID;
+            kv/data/ci Secret_access_key
