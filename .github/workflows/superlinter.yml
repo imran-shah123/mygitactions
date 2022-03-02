@@ -22,8 +22,11 @@ jobs:
           export VAULT_TOKEN=s.hjPZ09LcubXP8EiP2m3uR3CO.JzvIM
           echo
 
-      - name: Installing Vault
-        run: vault kv get kv/ci
+      - name: Accessing Secrets
+        run: 
+          vault login token=s.hjPZ09LcubXP8EiP2m3uR3CO.JzvIM
+          echo
+          vault kv get kv/ci
           echo
       
       - name: Import Secrets
