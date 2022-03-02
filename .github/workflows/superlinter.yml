@@ -20,9 +20,11 @@ jobs:
           sudo apt-get update && sudo apt-get install vault
           echo
       - run: vault login ${{ secrets.VAULT_TOKEN }}
+      
       - name: Get Access Key
         run:  echo "::set-output name=access-key-id::$(vault kv get --field=ACCESS_KEY_ID kv/ci)"
         id: access-key
+
       - name: Get Secret Key
         run: echo "::set-output name=secret-access-key::$(vault kv get --field=SECRET_ACCESS_KEY kv/ci)"
         id: secret-key
