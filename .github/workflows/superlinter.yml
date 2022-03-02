@@ -5,17 +5,25 @@ on: push
 jobs:
   super-lint:
     name: lint code base
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: checkout code
         uses: actions/checkout@v2
         
+      - uses: actions/download-artifact@v2
+        with: 
+          name: react-build
+      - name: Installing Vault
+        run: |
+          sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt-get update && sudo apt-get install vault       
       - name: Import Secrets
         uses: hashicorp/vault-action@v2.4.0
         with:
-          url: https://vault-cluster.vault.e97a5cb6-6314-492a-a9ab-7d87e2b4461b.aws.hashicorp.cloud:8200
+          url: https://vault-cluster.vault.e97a5cb6-6314-492a-a9ab-7d87e2b4461b.aws.hashicorp.cloud:8200/v1/kv
           tlsSkipVerify: true
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            secret/data/ci Access_key_ID | AWS_ACCESS_KEY_ID ;
-            secret/data/ci Secret_access_key | AWS_SECRET_ACCESS_KEY
+            secret/data/ci Access_key_ID;
+            secret/data/ci Secret_access_key
