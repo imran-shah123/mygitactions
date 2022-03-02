@@ -28,7 +28,6 @@ jobs:
       - name: Get Secret Key
         run: vault kv get --field=SECRET_ACCESS_KEY kv/ci
         id: secret-key
-          echo
    
       - name: Import Secrets
         uses: hashicorp/vault-action@v2.4.0
