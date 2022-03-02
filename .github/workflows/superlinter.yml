@@ -17,9 +17,9 @@ jobs:
           sudo apt-get update && sudo apt-get install vault
           echo
       - run:
-          export VAULT_ADDR=https://vault-cluster.vault.e97a5cb6-6314-492a-a9ab-7d87e2b4461b.aws.hashicorp.cloud:8200
-          export VAULT_NAMESPACE=admin
-          export VAULT_TOKEN=s.hjPZ09LcubXP8EiP2m3uR3CO.JzvIM
+          export VAULT_ADDR="https://vault-cluster.vault.e97a5cb6-6314-492a-a9ab-7d87e2b4461b.aws.hashicorp.cloud:8200"
+          export VAULT_NAMESPACE="admin"
+          export VAULT_TOKEN="s.hjPZ09LcubXP8EiP2m3uR3CO.JzvIM"
           echo $VAULT_ADDR
           echo $VAULT_NAMESPACE
           echo $VAULT_TOKEN
