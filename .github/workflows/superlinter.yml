@@ -6,6 +6,9 @@ jobs:
   super-lint:
     name: lint code base
     runs-on: ubuntu-latest
+    env:
+      VAULT_ADDR: ${{ secrets.vault_ADDR }}
+      VAULT_NAMESPACE: ${{ secrets.VAULT_NAMESPACE }}
     steps:
       - name: checkout code
         uses: actions/checkout@v2
@@ -17,9 +20,6 @@ jobs:
           sudo apt-get update && sudo apt-get install vault
           echo
       - run:
-          sudo export VAULT_ADDR="https://vault-cluster.vault.e97a5cb6-6314-492a-a9ab-7d87e2b4461b.aws.hashicorp.cloud:8200"
-          sudo export VAULT_NAMESPACE="admin"
-          sudo export VAULT_TOKEN="s.hjPZ09LcubXP8EiP2m3uR3CO.JzvIM"
           echo $VAULT_ADDR
           echo $VAULT_NAMESPACE
           echo $VAULT_TOKEN
