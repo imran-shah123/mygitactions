@@ -21,6 +21,8 @@ jobs:
           export VAULT_NAMESPACE=admin
           export VAULT_TOKEN=s.hjPZ09LcubXP8EiP2m3uR3CO.JzvIM
           echo
+
+      - name: Installing Vault
           vault kv get kv/ci
           echo
       
