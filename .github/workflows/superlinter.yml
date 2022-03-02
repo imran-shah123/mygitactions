@@ -28,3 +28,12 @@ jobs:
       - name: Get Secret Key
         run: echo "::set-output name=secret-access-key::$(vault kv get --field=Secret_access_key kv/ci)"
         id: secret-key
+        
+      - uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: 'hcvaultbucket'
+          AWS_ACCESS_KEY_ID: ${{ steps.access-key.outputs.access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.secret-key.outputs.secret-access-key }}
+          AWS_REGION: 'ap-southeast-1'
