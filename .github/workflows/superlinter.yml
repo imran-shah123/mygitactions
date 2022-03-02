@@ -22,7 +22,9 @@ jobs:
       - run: vault login ${{ secrets.VAULT_TOKEN }}
       
       - name: Get Access Key
-        run:  vault kv get --field=Access_key_ID kv/ci
+        run:  echo "::set-output name=access-key-id::$(vault kv get --field=Access_key_ID kv/ci)"
+        id: access-key
 
       - name: Get Secret Key
-        run: vault kv get --field=Secret_access_key kv/ci
+        run: echo "::set-output name=secret-access-key::$(vault kv get --field=Secret_access_key kv/ci)"
+        id: secret-key
