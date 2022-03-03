@@ -19,7 +19,7 @@ jobs:
           sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
           sudo apt-get update && sudo apt-get install vault
           echo
-      - run: vault login ${{ secrets.VAULT_TOKEN }}
+      - run: vault login $(vault write -field=token auth/approle/login role_id=${{ secrets.roleId }} secret_id=${{ secrets.secretId }}) > /dev/null
       
       - name: Get Access Key
         run:  echo "::set-output name=access-key-id::$(vault kv get --field=Access_key_ID kv/ci)"
